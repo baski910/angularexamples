@@ -1,0 +1,13 @@
+<p
+appColors
+[ngClass]="{'instructor-style': person.instructor}"
+>
+    <u>PERSON</u><br>
+    name: <span [textContent]="person.name"></span><br>
+    added_on: {{ person.added_on | date:"yyyy-MMM-dd" }} <br>
+    instructor: <span *ngIf="person.instructor then ins else notins"></span> <br>
+    <ng-template #ins>&check;</ng-template>
+    <ng-template #notins>&#10005;</ng-template>
+    <button id="show">SHOW  MORE</button>
+    <button id="delete" (click)="onDelete($event,person.name)">DELETE</button> 
+</p>
