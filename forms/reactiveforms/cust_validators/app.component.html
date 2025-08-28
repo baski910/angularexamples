@@ -1,0 +1,30 @@
+<form [formGroup]="singleForm" (ngSubmit)="onSubmit(singleForm)">
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" formControlName="email">
+    <div *ngIf="singleForm.get('email')?.errors?.['required']">
+      Email can not be empty
+    </div>
+    <div *ngIf="singleForm.get('email')?.errors?.['email']">
+      Email entered is not valid
+    </div>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" formControlName="password">
+    <div *ngIf="singleForm.get('password')!.invalid && singleForm.get('password')!.touched">
+      Password can not be empty
+    </div>
+  </div>
+  <div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" name="confirPassword" id="confirmPassword" formControlName="confirmPassword">
+    <div *ngIf="singleForm.get('confirmPassword')!.errors!['mismatch']">
+      Passwords do not match
+    </div>
+  </div>
+  
+ <div>
+    <button type="submit" [disabled]="singleForm.invalid">Submit</button>
+  </div>
+</form>
