@@ -1,0 +1,17 @@
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" [(ngModel)]="formData.username" required #username="ngModel">
+    <div *ngIf="username.invalid && username.touched">
+      <p *ngIf="username.errors?.['required']">Name is required</p>
+    </div>
+  </div>
+  <div>
+    <label for="useremail">Useremail</label>
+    <input type="text" name="useremail" [(ngModel)]="formData.useremail" required email #useremail="ngModel">
+    <div *ngIf="username.invalid && username.touched"></div>
+    <p *ngIf="useremail.errors?.['required']">Email is required</p>
+    <p *ngIf="useremail.errors?.['email']">Email is not valid</p>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>
